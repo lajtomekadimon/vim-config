@@ -36,11 +36,14 @@ Plug 'lilydjwg/colorizer'
 " NERDTree
 Plug 'scrooloose/nerdtree'
 
-" VIM-AIRLANE (cool status bar)
-Plug 'vim-airline/vim-airline'
+" lightline
+Plug 'itchyny/lightline.vim'
 
 " Relative line number
 Plug 'myusuf3/numbers.vim'
+
+" PaperColor theme
+Plug 'NLKNguyen/papercolor-theme'
 
 " Initialize plugin system
 call plug#end()
@@ -49,6 +52,23 @@ call plug#end()
 
 " `Repos` dir as default
 cd ~/Repos
+
+" PaperColor theme config
+set t_Co=256   " This may or may not be needed.
+set background=light
+colorscheme PaperColor
+
+" lightline config
+set laststatus=2
+let g:lightline = {
+    \ 'colorscheme': 'PaperColor',
+    \ 'active': {
+    \     'left': [
+    \         [ 'mode', 'paste' ],
+    \         [ 'readonly', 'filename', 'modified', 'helloworld' ]
+    \     ]
+    \ },
+\ }
 
 " All *.sql files as pgSQL
 let g:sql_type_default = 'pgsql'
@@ -71,48 +91,6 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 
 " NERDTree width
 let g:NERDTreeWinSize=36
-
-" air-line
-"let g:airline_powerline_fonts = 1
-" Enable tabs
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-
-" unicode symbols
-"let g:airline_left_sep = '»'
-"let g:airline_left_sep = '▶'
-"let g:airline_right_sep = '«'
-"let g:airline_right_sep = '◀'
-"let g:airline_symbols.linenr = '␊'
-"let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-"let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-"let g:airline_symbols.paste = 'Þ'
-"let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.notexists = 'Ɇ'
-let g:airline_symbols.crypt = '🔒'
-
-" airline symbols
-"let g:airline_left_sep = ''
-"let g:airline_left_alt_sep = ''
-"let g:airline_right_sep = ''
-"let g:airline_right_alt_sep = ''
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ' '
-let g:airline_symbols.maxlinenr = ' '
-let g:airline_symbols.dirty='⚡'
 
 " 80 char line limit rule
 set colorcolumn=80
