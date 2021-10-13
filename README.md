@@ -1,5 +1,5 @@
 # vim-config
-My personal configuration for Vim.
+My personal configuration for Vim (only tested on FreeBSD).
 
 How to use:
 
